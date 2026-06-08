@@ -1,15 +1,15 @@
-# Contribution [#]: [Issue Title]
+# Contribution [#2730]: [Issue: geemap cartoee.get_map() ignores region parameter and results in low resolution when using ax.set_extent()]
 
-**Contribution Number:** [1 / 2 / 3]  
-**Student:** [Your Name]  
-**Issue:** [GitHub issue link]  
-**Status:** [Phase I / Phase II / Phase III / Phase IV] [In Progress / Complete]
+**Contribution Number:** #2730
+**Student:** Cesar Picazo
+**Issue:** https://github.com/gee-community/geemap/issues/2730
+**Status:** Phase I
 
 ---
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs explaining why this issue interests you, how it matches your skills/learning goals, what you hope to learn]
+This issue caught my attention because it sits at the intersection of two areas I have been actively developing skills in: Python-based geospatial analysis and data visualization. I have been building GIS skills through ArcGIS Pro and working on a data science project analyzing traffic data in Austin, Texas, so the idea of working with satellite imagery and geographic datasets through Python feels like a natural next step. The cartoee bug is intriguing because it has a clear, well-diagnosed proble: a region parameter being silently ignored. This makes it approachable as a first open source contribution while still being a meaningful fix that affects real research workflows.
 
 ---
 
@@ -17,19 +17,19 @@
 
 ### Problem Description
 
-[In your own words, what's broken or missing?]
+The cartoee.get_map() function in geemap has a region parameter that is supposed to limit the rendered map to a specific geographic area. However, the parameter is silently ignored and the function renders the entire globe instead. As a workaround, users can manually crop the map afterward using ax.set_extent(), but this produces a low resolution result because the full global image was already downloaded and rendered at low resolution before being cropped down.
 
 ### Expected Behavior
 
-[What should happen?]
+When a user passes a bounding box to the region parameter, the function should fetch and render only that geographic area from Google Earth Engine at full resolution. The output image should be sharp and detailed, matching the resolution expected for that region size.
 
 ### Current Behavior
 
-[What actually happens?]
+The region parameter is ignored entirely, causing the function to default to a global extent regardless of what the user specifies. When users try to work around this by cropping the plot manually with ax.set_extent(), the image appears pixelated because it was originally rendered at global scale and then scaled down to a small region.
 
 ### Affected Components
 
-[Which parts of the codebase are involved?]
+The get_map() function in geemap/cartoee.py, where the region parameter is not being correctly passed to the underlying Earth Engine image fetch call (likely getThumbURL or equivalent export logic)
 
 ---
 
