@@ -1,15 +1,15 @@
-# Contribution [#2730]: [Issue: geemap cartoee.get_map() ignores region parameter and results in low resolution when using ax.set_extent()]
+# Contribution [#3792]: [string expressions parity with pyspark]
 
-**Contribution Number:** #2730
+**Contribution Number:** #3792
 **Student:** Cesar Picazo
-**Issue:** https://github.com/gee-community/geemap/issues/2730
-**Status:** Phase I
+**Issue:** https://github.com/Eventual-Inc/Daft/issues/3792
+**Status:** Phase II
 
 ---
 
 ## Why I Chose This Issue
 
-This issue caught my attention because it sits at the intersection of two areas I have been actively developing skills in: Python-based geospatial analysis and data visualization. I have been building GIS skills through ArcGIS Pro and working on a data science project analyzing traffic data in Austin, Texas, so the idea of working with satellite imagery and geographic datasets through Python feels like a natural next step. The cartoee bug is intriguing because it has a clear, well-diagnosed proble: a region parameter being silently ignored. This makes it approachable as a first open source contribution while still being a meaningful fix that affects real research workflows.
+This issue caught my attention since it seemed like a great start to my open source journey. It is not too complicated and requires me to provide pre-existing string functions to the Daft repository. It also connects to my strengths which are the AI field, machine learning, data pipelines, and Python. Daft is related to Pandas in terms of helping with data manipulation and pipeline, which I have worked with quite a bit. Since I can now relate Daft to Pandas, it removes an extra roadblock of having to take a lot of extra time trying to understand the library, so I can try fast forward to the brainstorming, testing, and solution stage. 
 
 ---
 
@@ -17,19 +17,19 @@ This issue caught my attention because it sits at the intersection of two areas 
 
 ### Problem Description
 
-The cartoee.get_map() function in geemap has a region parameter that is supposed to limit the rendered map to a specific geographic area. However, the parameter is silently ignored and the function renders the entire globe instead. As a workaround, users can manually crop the map afterward using ax.set_extent(), but this produces a low resolution result because the full global image was already downloaded and rendered at low resolution before being cropped down.
+Daft has a string expression API, which are operations that can be applied to a column of strings in a DataFrame. However, there are a lot of missing expressions that exist in PySpark. PySpark is Spark's Python API, and it has a very mature, extensive set of string functions built up over years.
 
 ### Expected Behavior
 
-When a user passes a bounding box to the region parameter, the function should fetch and render only that geographic area from Google Earth Engine at full resolution. The output image should be sharp and detailed, matching the resolution expected for that region size.
+We want to be able to use multiple string expressions in a Daft environment. If not, we would have to switch to Pandas or Spark to do the string work. The goal is to just use Daft for all expressions, and keep it simple for users when working with strings. 
 
 ### Current Behavior
 
-The region parameter is ignored entirely, causing the function to default to a global extent regardless of what the user specifies. When users try to work around this by cropping the plot manually with ax.set_extent(), the image appears pixelated because it was originally rendered at global scale and then scaled down to a small region.
+Currently, users cannot do multiple existing string expressions when using the Daft library, which is known to be fast and efficient, and able to work with large datasets. Since multiple string expressions aren't implemented in Daft, users have to move to Pandas or another library to be able to make changes to column of strings.
 
-### Affected Components
+### Who is affected?
 
-The get_map() function in geemap/cartoee.py, where the region parameter is not being correctly passed to the underlying Earth Engine image fetch call (likely getThumbURL or equivalent export logic)
+Users who are working with large datasets, which Daft is known to do well with, will be affected largely. Users who want to migrate from another library into Daft would have to do extra work of adding extra code to deal with the fact that Daft doesn't deal with certain string expressions. The mission of Daft is to be fast, efficient, and user-friendly, so not including string expressions affects that. 
 
 ---
 
@@ -38,6 +38,16 @@ The get_map() function in geemap/cartoee.py, where the region parameter is not b
 ### Environment Setup
 
 [Notes on setting up your local development environment - challenges you faced, how you solved them]
+
+Have not started on creating solutions for string expressions, but going through the process of choosing which expressions I want to work on. The person that talked about this issue gave a list of string expressions we can choose from. It is not required to do all at once, but for different people to go in and choose to then work on it. So far, only three have been implemented. 
+
+### Next Steps / Brainstorming
+
+-Currently, I am thinking of choosing the regex expressions as I have experience of working with them when working with data. 
+
+-Currently, I am looking at how the other contributions did the string expressions, so I can follow their same format. So far, it seems to me that they have added to expressions and functions folder/file under the Daft folder.
+
+
 
 ### Steps to Reproduce
 
