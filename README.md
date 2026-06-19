@@ -37,23 +37,17 @@ Users who are working with large datasets, which Daft is known to do well with, 
 
 ### Environment Setup
 
-[Notes on setting up your local development environment - challenges you faced, how you solved them]
+Getting the library set up was fairly easy:
 
-Have not started on creating solutions for string expressions, but going through the process of choosing which expressions I want to work on. The person that talked about this issue gave a list of string expressions we can choose from. It is not required to do all at once, but for different people to go in and choose to then work on it. So far, only three have been implemented. 
-
-### Next Steps / Brainstorming
-
--Currently, I am thinking of choosing the regex expressions as I have experience of working with them when working with data. 
-
--Currently, I am looking at how the other contributions did the string expressions, so I can follow their same format. So far, it seems to me that they have added to expressions and functions folder/file under the Daft folder.
-
-
+```bash
+pip install -U daft
+```
 
 ### Steps to Reproduce
 
-1. [Step 1]
-2. [Step 2]
-3. [Observed result]
+1. Install and import Daft library
+2. Create a DataFrame with string columns to test avaible and unavailable string functions
+3. See which functions work and which don't because of their non-existence
 
 ### Reproduction Evidence
 
