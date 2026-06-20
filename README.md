@@ -58,9 +58,13 @@ pip install -U daft
 
 ## Solution Approach
 
-### Analysis
+### Notes / Analysis
 
-[Your analysis of the root cause - what's causing the issue?]
+- So, the main computation of a function takes place in Rust. So, the code to calculate the "bit_length" would have to be written in Rust.
+- Anything done in Python will be utilizing the Expression class to construct a new Expression that contains the information from the string function.
+- I have to touch four places: the Rust implementation (daft-functions-utf8/src/lib.rs), a Python function wrapper (daft/functions/*.py), the Expression class method (daft/expressions/expressions.py), and a test file (tests/expressions/).
+    - The split exists because Daft exposes the same operation three ways (expression API, SQL, and method-style like .str.x()) — Rust is the single source of truth, and each Python entry point is just a thin call into the same registered function, so the logic isn't duplicated.
+- Still need to better understand how the Expression class works and how I can code in Rust (never worked with Rust before). 
 
 ### Proposed Solution
 
