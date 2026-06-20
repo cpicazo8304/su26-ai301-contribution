@@ -51,9 +51,8 @@ pip install -U daft
 
 ### Reproduction Evidence
 
-- **Commit showing reproduction:** [Link to commit in your fork]
-- **Screenshots/logs:** [If applicable]
-- **My findings:** [What you discovered during reproduction]
+- **Commit showing reproduction:** [82194fd](https://github.com/cpicazo8304/su26-ai301-contribution/commit/82194fd7abed3dc251bd21005bc537927e17b35f)
+- **My findings:** I discovered that the functions I want to work on, "bit_length" and "octet_length" don't exist in the library. So, I must add them in. 
 
 ---
 
