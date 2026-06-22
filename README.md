@@ -64,7 +64,6 @@ pip install -U daft
 - Anything done in Python will be utilizing the Expression class to construct a new Expression that contains the information from the string function.
 - I have to touch four places: the Rust implementation (daft-functions-utf8/src/lib.rs), a Python function wrapper (daft/functions/*.py), the Expression class method (daft/expressions/expressions.py), and a test file (tests/expressions/).
     - The split exists because Daft exposes the same operation three ways (expression API, SQL, and method-style like .str.x()) — Rust is the single source of truth, and each Python entry point is just a thin call into the same registered function, so the logic isn't duplicated.
-- Still need to better understand how the Expression class works and how I can code in Rust (never worked with Rust before). 
 
 ### Proposed Solution
 
@@ -74,20 +73,21 @@ pip install -U daft
 
 Using UMPIRE framework (adapted):
 
-**Understand:** [Restate the problem]
+**Understand:** String expressions such as bit_length are not part of the Daft library. This could make it tough for people to migrate into Daft. For people starting from Daft, it could lead to extra work by having to use other libraries for string columns, which is not efficient. I will be focusing on the bit_length function that counts the length of a string in terms of bits. 
 
-**Match:** [What similar patterns/solutions exist in the codebase?]
+**Match:** There are other string functions like translate, to_binary, etc. There are also numerical functions that are part of Spark but not Daft. In terms of solutions, there are string functions such as length_bytes and a normal length function. They have been implemented in Rust and Python in the repository. With my inexperience in Rust, they could help come up with a way to design the bit_length function. 
 
 **Plan:** [Step-by-step implementation plan]
-1. [Modify file X to do Y]
-2. [Add function Z]
-3. [Update tests]
+1. The first step is to create a new file under the directory, src/daft-functions-utf8/src. This is where the rust implementation of bit_length will exist. 
+2. Complete the rust implementation for bit_length.
+3. Add the new function to the Expression class (daft/expressions/expressions.py) and to the string functions file (daft/functions/str.py)
+4. Test the rust and python implementations by adding a test to the test/expressions directory.
 
-**Implement:** [Link to your branch/commits as you work]
+**Implement:** [Link to commits](https://github.com/cpicazo8304/Daft)
 
 **Review:** [Self-review checklist - does it follow the project's contribution guidelines?]
 
-**Evaluate:** [How will you verify it works?]
+**Evaluate:** I will evaluate in two ways: the test/expressions directory where I will add more own tests and by having a colab notebook in my local environment that will test the function's use.
 
 ---
 
