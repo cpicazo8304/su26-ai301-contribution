@@ -95,22 +95,22 @@ Using UMPIRE framework (adapted):
 
 ### Unit Tests
 
-- [ ] Test case 1: ASCII strings
+- [ ] **Test case 1 (ASCII strings)**:
 Basic single-byte characters where every character is exactly 1 byte = 8 bits. Input "hello" (5 bytes) should return 40. Sanity check that the core byte × 8 math is correct.
-- [ ] Test case 2: Multi-byte UTF-8 characters
+- [ ] **Test case (Multi-byte UTF-8 characters)**:
 Where bit_length diverges from character length. Input "café" should return 40 (5 bytes × 8), not 32 (4 chars × 8). Confirms bytes are being counted, not characters.
-- [ ] Test case 3:  Null handling
+- [ ] **Test case 3 (Null handling)**:
 A column with None values mixed in — e.g. ["hello", None, "world"]. The null row should return None, not crash or return 0. Critical since the val? pattern in the implementation is specifically designed to propagate nulls.
-- [ ] Test case 4: Empty string
+- [ ] **Test case 4 (Empty string)**:
 Input "" should return 0. Edge case that is easy to accidentally break with off-by-one logic.
-- [ ] Test case 5: Emoji / 4-byte characters
+- [ ] **Test case 5 (Emoji / 4-byte characters)**:
 Input "🚀" should return 32 (4 bytes × 8). Confirms the full UTF-8 byte range works, not just 2-byte characters.
 
 ### Integration Tests
 
-- [ ] Integration scenario 1: DataFrame pipeline
+- [ ] **Integration scenario 1 (DataFrame pipeline)**:
 Create a Daft DataFrame with a string column, call bit_length via the expression API, collect results, and assert output column values match expected. Confirms the full Python → registry → Rust → result round-trip works end to end.
-- [ ] Integration scenario 2: PySpark parity check
+- [ ] **Integration scenario 2 (PySpark parity check)**:
 Run the same input through both PySpark's bit_length and Daft's implementation and assert outputs match. Highest-confidence test that the behavior correctly matches the intended PySpark parity goal.
 
 ### Manual Testing
