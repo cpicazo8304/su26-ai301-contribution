@@ -121,9 +121,10 @@ Run the same input through both PySpark's bit_length and Daft's implementation a
 
 ## Implementation Notes
 
-### Week [X] Progress
+### Week [1] Progress
 
 [What you built this week, challenges faced, decisions made]
+I have gone through Rust documentation and spent a few days learning new terms in Rust. I know the basics of Rust after going through a 3-hour long tutorial video, but still need to figure out niche methods, functions, and interfaces. Currently, I am learning about Traits in Rust because the length_bytes function focuses on that a lot. Once I figure that out, I believe I can write the bit_length function and finish the pull request by next week. 
 
 ### Week [Y] Progress
 
@@ -169,6 +170,6 @@ Run the same input through both PySpark's bit_length and Daft's implementation a
 
 ## Resources Used
 
-- [Link to helpful documentation]
-- [Tutorial or Stack Overflow post that helped]
+- [Rust Documentation](https://doc.rust-lang.org/stable/std/index.html)
+- [Rust Full Course](https://www.youtube.com/watch?v=rQ_J9WH6CGk)
 - [GitHub issues or discussions that helped]
