@@ -83,7 +83,7 @@ Using UMPIRE framework (adapted):
 3. Add the new function to the Expression class (daft/expressions/expressions.py) and to the string functions file (daft/functions/str.py)
 4. Test the rust and python implementations by adding a test to the test/expressions directory.
 
-**Implement:** [Link to commits](https://github.com/cpicazo8304/Daft)
+**Implement:** [Link to commits](https://github.com/cpicazo8304/Daft/tree/feat/bit-length)
 
 **Review:** [Self-review checklist - does it follow the project's contribution guidelines?]
 
@@ -123,17 +123,18 @@ Run the same input through both PySpark's bit_length and Daft's implementation a
 
 ### Week [1] Progress
 
-[What you built this week, challenges faced, decisions made]
 I have gone through Rust documentation and spent a few days learning new terms in Rust. I know the basics of Rust after going through a 3-hour long tutorial video, but still need to figure out niche methods, functions, and interfaces. Currently, I am learning about Traits in Rust because the length_bytes function focuses on that a lot. Once I figure that out, I believe I can write the bit_length function and finish the pull request by next week. 
 
-### Week [Y] Progress
+### Week [2] Progress
 
-[Continue documenting as you work]
+Analyzed the files of Daft, specifically the length_bytes rust implementation and analyzed the libraries and structs used. This helped me write the bit_length function (src/daft-functions-utf8/src/bit_length.rs), which was nearly the same.
+
+You can see the implementation here: [Link to implementation]()
 
 ### Code Changes
 
-- **Files modified:** [List]
-- **Key commits:** [Links to important commits]
+- **Files modified:** bit_length.rs (added to src/daft-functions-utf8/src directory)
+- **Key commits:** 
 - **Approach decisions:** [Why you chose certain approaches]
 
 ---
