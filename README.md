@@ -129,7 +129,7 @@ I have gone through Rust documentation and spent a few days learning new terms i
 
 Analyzed the files of Daft, specifically the length_bytes rust implementation and analyzed the libraries and structs used. This helped me write the bit_length function (src/daft-functions-utf8/src/bit_length.rs), which was nearly the same.
 
-You can see the implementation here: [Link to implementation]()
+You can see the implementation here: [Link to implementation](https://github.com/cpicazo8304/su26-ai301-contribution/blob/main/implementations/bit_length.rs)
 
 ### Code Changes
 
