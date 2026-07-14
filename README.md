@@ -196,15 +196,25 @@ You can see the implementation here: [Link to implementation](https://github.com
 
 ## Pull Request
 
-**PR Link:** [GitHub PR URL when submitted]
+**PR Link:** [PR Link](https://github.com/Eventual-Inc/Daft/pull/7263)
 
-**PR Description:** [Draft or final PR description - much of the content above can be adapted]
+**PR Description:** 
+
+What does this PR do?: Adds the bit_length(col)  function for Daft's UTF8/string expressions.
+
+Why was this PR needed?: Issue #3792 reported that there were missing string expressions that exists in Spark but not in Daft. Not required to do all the functions, but I was able to implement the bit_length function.
+
+What are the relevant issue numbers?: Checks off a function in #3792.
+
+Does this PR meet the acceptance criteria?:
+[x] Tests added for new behavior
+[x] All tests passing
+[x] No breaking changes
 
 **Maintainer Feedback:**
-- [Date]: [Summary of feedback received]
-- [Date]: [How you addressed it]
+- [July 13]: The AI bot that checks pull requests (Greptile) give me a confidence score of 5/5 and said my PR request is safe to merge. Currently, awaiting checks on my code.
 
-**Status:** [Awaiting review / Iterating / Approved / Merged]
+**Status:** Awaiting Review 
 
 ---
 
