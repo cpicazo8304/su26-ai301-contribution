@@ -37,11 +37,15 @@ Users who are working with large datasets, which Daft is known to do well with, 
 
 ### Environment Setup
 
+Used the project's dev container with VS Code for production process, but Google Colab for reproduction to access the library. Only thing I had to do was download the library.
+
 Getting the library set up was fairly easy:
 
 ```bash
 pip install -U daft
 ```
+
+Working Branch: [](https://github.com/cpicazo8304/Daft/tree/feat/bit-length)
 
 ### Steps to Reproduce
 
@@ -85,7 +89,7 @@ Using UMPIRE framework (adapted):
 
 **Implement:** [Link to commits](https://github.com/cpicazo8304/Daft/tree/feat/bit-length)
 
-**Review:** [Self-review checklist - does it follow the project's contribution guidelines?]
+**Review:** Will look at length_bytes function and how other functions have been implemented to make sure I have the correct structure.
 
 **Evaluate:** I will evaluate in two ways: the test/expressions directory where I will add more own tests and by having a colab notebook in my local environment that will test the function's use.
 
@@ -95,47 +99,90 @@ Using UMPIRE framework (adapted):
 
 ### Unit Tests
 
-- [ ] **Test case 1 (ASCII strings)**:
+- [X] **Test case 1 (ASCII strings)**:
 Basic single-byte characters where every character is exactly 1 byte = 8 bits. Input "hello" (5 bytes) should return 40. Sanity check that the core byte × 8 math is correct.
-- [ ] **Test case (Multi-byte UTF-8 characters)**:
+- [X] **Test case (Multi-byte UTF-8 characters)**:
 Where bit_length diverges from character length. Input "café" should return 40 (5 bytes × 8), not 32 (4 chars × 8). Confirms bytes are being counted, not characters.
-- [ ] **Test case 3 (Null handling)**:
+- [X] **Test case 3 (Null handling)**:
 A column with None values mixed in — e.g. ["hello", None, "world"]. The null row should return None, not crash or return 0. Critical since the val? pattern in the implementation is specifically designed to propagate nulls.
-- [ ] **Test case 4 (Empty string)**:
+- [X] **Test case 4 (Empty string)**:
 Input "" should return 0. Edge case that is easy to accidentally break with off-by-one logic.
-- [ ] **Test case 5 (Emoji / 4-byte characters)**:
+- [X] **Test case 5 (Emoji / 4-byte characters)**:
 Input "🚀" should return 32 (4 bytes × 8). Confirms the full UTF-8 byte range works, not just 2-byte characters.
 
 ### Integration Tests
 
-- [ ] **Integration scenario 1 (DataFrame pipeline)**:
+- [X] **Integration scenario 1 (DataFrame pipeline)**:
 Create a Daft DataFrame with a string column, call bit_length via the expression API, collect results, and assert output column values match expected. Confirms the full Python → registry → Rust → result round-trip works end to end.
-- [ ] **Integration scenario 2 (PySpark parity check)**:
-Run the same input through both PySpark's bit_length and Daft's implementation and assert outputs match. Highest-confidence test that the behavior correctly matches the intended PySpark parity goal.
 
 ### Manual Testing
 
-[What you tested manually and results]
+#### Process
+
+I tested different types of strings: empty, null, emoji, text with accented chars, and normal text to check for different directions. I constructed a series with a string representing each of the ones I mentioned. 
+
+#### Results
+
+I was able to get the correct resulting Series/expression after running the bit_length function on the column containing the different types of strings.
+
 
 ---
 
 ## Implementation Notes
 
-### Week [1] Progress
+### Week [1] Progress (June 22 - 28)
 
-I have gone through Rust documentation and spent a few days learning new terms in Rust. I know the basics of Rust after going through a 3-hour long tutorial video, but still need to figure out niche methods, functions, and interfaces. Currently, I am learning about Traits in Rust because the length_bytes function focuses on that a lot. Once I figure that out, I believe I can write the bit_length function and finish the pull request by next week. 
+**What I built:**
+- Didn't build much this week, but instead spent the week understanding Rust to better understand how string functions are implemented in Daft.
 
-### Week [2] Progress
+**Challenges faced:**
+- I had not worked with Rust before. I have been purely a Python person with some Java, JavaScript, C, and HTML experience.
+  - It was difficult understanding the way types and declarations worked (mutable variables, etc.).
+
+**Commits this week:**
+- No commits this week.
+
+### Week [2] Progress (June 29 - July 5)
+
+**What I built:**
+- Analyzed the files of Daft, specifically the length_bytes rust implementation and analyzed the libraries and structs used.
+- Added the bit_length implementation
+- Added the bit_length call in daft/functions/str.py and daft/expressions/expressions.py
+
+**Challenges faced:**
+- Initially, I couldn't understand how the Rust implementations worked in correspondence with the Python code.
+   - Understanding Rust more helped notice the structure helped bring me up to speed.
+
+**Commits this week:**
+- 98f7050: added bit_length function. Similar to length_bytes but with times 8 and different names.
+- 2f3abf3: Added function to expression and functions files in addition to adding tests (Next thing is to test out the function)
 
 Analyzed the files of Daft, specifically the length_bytes rust implementation and analyzed the libraries and structs used. This helped me write the bit_length function (src/daft-functions-utf8/src/bit_length.rs), which was nearly the same.
 
 You can see the implementation here: [Link to implementation](https://github.com/cpicazo8304/su26-ai301-contribution/blob/main/implementations/bit_length.rs)
 
+### Week [3] Progress (July 6 - 12)
+
+**What I built:**
+- Added in the bit_length function into the __init__.py file under daft/functions
+- Added in the test function to test the completed function.
+  - Function contains a Series of [normal word, normal word, word with accented letter, empty string, None, emoji]
+- All existing tests passed (ran full test suite)
+
+**Challenges faced:**
+- Initially, I couldn't run the test function because of not having the make cmd line.
+- Spent 3 hours debugging before realizing I needed more storage so I redirected the make .venv and make build to my SD card that contains a lot more storage. Also, put the repository files into the SD card, so I won't have to worry about storage.
+- Also, there times that I required to call some commands to add in args to run the tests that took me a bit to figure out.
+
+**Commits this week:**
+- 2b2de17: feat(string expr): Added bit_length to __init__.py so it can be used.
+- e93af31: chore: gitignore Windows build artifacts (.pyd, .pdb)
+
 ### Code Changes
 
-- **Files modified:** bit_length.rs (added to src/daft-functions-utf8/src directory)
-- **Key commits:** 
-- **Approach decisions:** [Why you chose certain approaches]
+- **Files modified:** bit_length.rs (added to src/daft-functions-utf8/src directory), daft/expressions/expressions.py, daft/functions/str.py, tests/expressions/test_utf8.py, daft/functions/__init__.py
+- **Key commits:** 98f7050, 2f3abf3, 2b2de17, e93af31
+- **Approach decisions:** I modeled bit_length after length_bytes because they work the same. Bit length is just 8 * length_bytes. Also, the functions have a structure that I must follow when adding it in: add call in str.py, expressions.py, and __init__.py.
 
 ---
 
