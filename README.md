@@ -213,6 +213,8 @@ Does this PR meet the acceptance criteria?:
 
 **Maintainer Feedback:**
 - [July 13]: The AI bot that checks pull requests (Greptile) give me a confidence score of 5/5 and said my PR request is safe to merge. Currently, awaiting checks on my code.
+- [July 13]: After checks, I failed a test checking style (spacing, blank lines, etc.).
+- [July 13]: I ran a couple of cmds such as `cargo clean` and `venv\Scripts\pre-commit run --all-files` that cleaned up the files I edited. Afer that, I passed all the checks.
 
 **Status:** Awaiting Review 
 
