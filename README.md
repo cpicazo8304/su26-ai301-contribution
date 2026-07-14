@@ -45,7 +45,7 @@ Getting the library set up was fairly easy:
 pip install -U daft
 ```
 
-Working Branch: [](https://github.com/cpicazo8304/Daft/tree/feat/bit-length)
+Working Branch: [Branch](https://github.com/cpicazo8304/Daft/tree/feat/bit-length)
 
 ### Steps to Reproduce
 
@@ -121,9 +121,17 @@ Create a Daft DataFrame with a string column, call bit_length via the expression
 
 I tested different types of strings: empty, null, emoji, text with accented chars, and normal text to check for different directions. I constructed a series with a string representing each of the ones I mentioned. 
 
+Here is the test function:
+
+![test_function](Screenshots/tests_sc.png)
+
 #### Results
 
 I was able to get the correct resulting Series/expression after running the bit_length function on the column containing the different types of strings.
+
+Here are the results:
+
+![Results](Screenshots/tests_passed_sc.png)
 
 
 ---
@@ -204,15 +212,15 @@ You can see the implementation here: [Link to implementation](https://github.com
 
 ### Technical Skills Gained
 
-[What you learned technically]
+Technically, I learned how to efficiently move through the code base, how to use make cmd, how to use Git Bash, how to code in Rust (beginner level), and how to use the git commands. 
 
 ### Challenges Overcome
 
-[What was hard and how you solved it]
+It was difficult understanding Rust from someone who is better at Python. It is a low-level language that works differently from Python. It also takes up space in my laptop, and is organized in a unique way (cargo.tml, src folder, mod.rs, lib.rs). I had to look through documentation, watch a beginner video, and, more importantly, look at the structure of Rust in action in the Daft repository that helped bring me up to speed about how Rust works and how it is implemented in the code.
 
 ### What I'd Do Differently Next Time
 
-[Reflection on your process]
+Next time, I will definitely name my commits a bit better. I will also look only at relevant files, rather spend more time understanding a large portion of the codebase. I can look through where things I defined, but honestly, I didn't have to for this contribution.
 
 ---
 
@@ -220,4 +228,3 @@ You can see the implementation here: [Link to implementation](https://github.com
 
 - [Rust Documentation](https://doc.rust-lang.org/stable/std/index.html)
 - [Rust Full Course](https://www.youtube.com/watch?v=rQ_J9WH6CGk)
-- [GitHub issues or discussions that helped]
