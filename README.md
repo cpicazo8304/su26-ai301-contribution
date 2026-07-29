@@ -264,23 +264,24 @@ Does this PR meet the acceptance criteria (test cases that were done in result t
 - [x] PR test suite / test-imports-platform (ubuntu, 3.12, false) (pull_request)
 - [x] PR test suite / test-imports-platform (ubuntu, 3.13, false) (pull_request)
 - [x] PR test suite / test-imports-platform (ubuntu, 3.13, false) (pull_request)
+- [ ] PR test suite / unit-test (3.10, native, 15.0.0, ubuntu-latest, false, false) (pull_request)
 - [x] PR test suite / unit-test (3.10, native, 15.0.0, ubuntu-latest, false, false) (pull_request)
-- [x] PR test suite / unit-test (3.10, native, 15.0.0, ubuntu-latest, false, false) (pull_request)
+- [ ] PR test suite / unit-test (3.10, native, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
 - [x] PR test suite / unit-test (3.10, native, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
-- [x] PR test suite / unit-test (3.10, native, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
+- [ ] PR test suite / unit-test (3.10, ray, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
 - [x] PR test suite / unit-test (3.10, ray, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
-- [x] PR test suite / unit-test (3.10, ray, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
+- [ ] PR test suite / unit-test (3.13, native, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
 - [x] PR test suite / unit-test (3.13, native, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
-- [x] PR test suite / unit-test (3.13, native, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
+- [ ] PR test suite / unit-test (3.13, ray, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
 - [x] PR test suite / unit-test (3.13, ray, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
-- [x] PR test suite / unit-test (3.13, ray, 22.0.0, blacksmith-8vcpu-ubuntu-2204, true, false) (pull_request)
-- [x] PR test suite / unit-tests (pull_request)
+- [ ] PR test suite / unit-tests (pull_request)
 - [x] PR test suite / unit-tests (pull_request)
 
 **Maintainer Feedback:**
 - [July 13]: The AI bot that checks pull requests (Greptile) give me a confidence score of 5/5 and said my PR request is safe to merge. Currently, awaiting checks on my code.
 - [July 13]: After checks, I failed a test checking style (spacing, blank lines, etc.).
 - [July 13]: I ran a couple of cmds such as `cargo clean` and `venv\Scripts\pre-commit run --all-files` that cleaned up the files I edited. Afer that, I passed all the checks.
+- [July 27]: I had to merge in some commits that were made to the original repository. However, this cause more errors and lead to 6 failed test cases, so I have to dive deeper before letting the maintainer know that I am finished.
 
 **Status:** Awaiting Review 
 
