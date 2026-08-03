@@ -200,13 +200,18 @@ You can see the implementation here: [Link to implementation](https://github.com
 
 **PR Description:** 
 
-What does this PR do?: The problem was that there doesn't exist string functions for Daft's Series's columns. In specific, the library was missing a bit_length() method that can calculate the amount of bits per string in a column. For this reason, this PR adds the bit_length(col)  function for Daft's UTF8/string expressions.
+What does this PR do?
+
+Context: The problem was that there doesn't exist string functions for Daft's Series's columns that exist in PySpark. In specific, the library was missing a bit_length() method that can calculate the amount of bits per string in a column. 
+
+Solution: This PR adds the bit_length(col) function for Daft's UTF8/string expressions.
 
 Why was this PR needed?: Issue #3792 reported that there were missing string expressions that exists in Spark but not in Daft. Not required to do all the functions, but I was able to implement the bit_length function, which helped add an extra function for anyone working with string columns can use to add more data/features to their dataset.
 
 What are the relevant issue numbers?: Checks off a function in #3792.
 
 Does this PR meet the acceptance criteria (test cases that were done in result to the PR request)?:
+This PR meets the acceptance criteria given by the repository automatically when pushed. Here are each of the criteria that was needed for the PR:
 - [x] Build docs / docgen (pull_request)
 - [x] CodSpeed Performance Analysis
 - [x] CodSpeed Performance Analysis
